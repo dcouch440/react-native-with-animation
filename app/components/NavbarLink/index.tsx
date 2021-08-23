@@ -3,6 +3,8 @@ import { Animated, StyleSheet, TouchableOpacity } from 'react-native';
 import { Link } from 'react-router-native';
 import colors from '../../config';
 
+type VoidFunction = () => void
+
 interface Props {
   to: string
   text: string
@@ -16,14 +18,15 @@ export default function NavbarLink ({
   const [color, setColor] = useState<string>('#FFF');
   const translation = useRef<Animated.Value>(new Animated.Value(0)).current
 
-  const handlePressIn: () => void = () => {
+  const handlePressIn: VoidFunction = () => {
     setColor(colors.buttonTextPress)
     Animated.spring(translation, {
       toValue: -5,
       useNativeDriver: true
     }).start()
   }
-  const handlePressOut: () => void = () => {
+
+  const handlePressOut: VoidFunction = () => {
     setColor(colors.buttonText)
     Animated.spring(translation, {
       toValue: 0,
