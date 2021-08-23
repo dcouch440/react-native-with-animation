@@ -16,27 +16,26 @@ export default function NavbarLink ({
 }: Props
 ) {
   const [color, setColor] = useState<string>('#FFF');
-  const translation = useRef<Animated.Value>(new Animated.Value(1)).current
+  const translation = useRef<Animated.Value>(new Animated.Value(1)).current;
 
   const handlePressIn: VoidFunction = () => {
-    setColor(colors.buttonTextPress)
+    setColor(colors.buttonTextPress);
     Animated.spring(translation, {
       toValue: 1.01,
       useNativeDriver: true
-    }).start()
-  }
+    }).start();
+  };
 
   const handlePressOut: VoidFunction = () => {
-    setColor(colors.buttonText)
+    setColor(colors.buttonText);
     Animated.spring(translation, {
       toValue: 1,
       useNativeDriver: true
-    }).start()
-  }
+    }).start();
+  };
 
   return (
-    <TouchableOpacity
-    >
+    <TouchableOpacity >
       <Link
         style={styles.link}
         to={to}
@@ -51,12 +50,13 @@ export default function NavbarLink ({
           textShadowColor: 'rgba(255, 255, 255, 0.404)',
           textShadowOffset: { width: -1, height: 1 },
           textShadowRadius: 10
-        }}>
+        }}
+        >
           {text}
         </Animated.Text>
       </Link>
     </TouchableOpacity>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -65,4 +65,4 @@ const styles = StyleSheet.create({
     flexDirection: 'row-reverse',
     borderRadius: 10
   }
-})
+});
