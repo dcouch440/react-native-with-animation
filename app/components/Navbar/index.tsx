@@ -6,25 +6,25 @@ import colors from '../../config';
 import NavbarLink from '../NavbarLink';
 
 export default function Navbar () {
-  const [show, setShow] = useState<boolean>(false)
-  const { width } = useDimensions().screen
-  const translation = useRef<Animated.Value>(new Animated.Value(width)).current
-  const showMenuProperty = show ? 'flex' : 'none'
+  const [show, setShow] = useState<boolean>(false);
+  const { width } = useDimensions().screen;
+  const translation = useRef<Animated.Value>(new Animated.Value(width)).current;
+  const showMenuProperty = show ? 'flex' : 'none';
 
   const handlePress = () => {
     if (!show) {
       Animated.timing(translation, {
         toValue: 0,
         useNativeDriver: true
-      }).start()
+      }).start();
     } else {
       Animated.timing(translation, {
         toValue: width,
         useNativeDriver: true
-      }).start()
+      }).start();
     }
-    setShow(prev => !prev)
-  }
+    setShow(prev => !prev);
+  };
 
   return (
     <View style={styles.navbar}>
@@ -56,7 +56,7 @@ export default function Navbar () {
         />
       </Animated.View>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -74,4 +74,4 @@ const styles = StyleSheet.create({
     flexDirection: 'row-reverse',
     paddingLeft: 5
   }
-})
+});
