@@ -1,10 +1,11 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Text } from 'react-native'
+import AnimatedScreenTransition from '../../components/AnimatedScreenTransition'
 
 export default function About () {
   return (
-    <View>
+    <AnimatedScreenTransition>
       <Text>About</Text>
-    </View>
+    </AnimatedScreenTransition>
   )
 }
