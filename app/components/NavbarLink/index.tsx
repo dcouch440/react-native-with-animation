@@ -14,16 +14,16 @@ export default function NavbarLink ({
 }: Props
 ) {
   const [color, setColor] = useState<string>('#FFF');
-  const translation = useRef(new Animated.Value(0)).current
+  const translation = useRef<Animated.Value>(new Animated.Value(0)).current
 
-  const handlePressIn = () => {
+  const handlePressIn: () => void = () => {
     setColor(colors.buttonTextPress)
     Animated.spring(translation, {
       toValue: -5,
       useNativeDriver: true
     }).start()
   }
-  const handlePressOut = () => {
+  const handlePressOut: () => void = () => {
     setColor(colors.buttonText)
     Animated.spring(translation, {
       toValue: 0,
