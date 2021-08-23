@@ -2,6 +2,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useDimensions } from '@react-native-community/hooks';
 import React, { useRef, useState } from 'react';
 import { Animated, StyleSheet, TouchableOpacity, View } from 'react-native';
+import colors from '../../config';
 import NavbarLink from '../NavbarLink';
 
 export default function Navbar () {
@@ -39,7 +40,11 @@ export default function Navbar () {
         </TouchableOpacity>
       </View>
       <Animated.View
-        style={[{ translateX: translation }, styles.drawer, { display: showMenuProperty }]}
+        style={[
+          { translateX: translation },
+          styles.drawer,
+          { display: showMenuProperty
+        }]}
       >
         <NavbarLink
           text='Home'
@@ -59,7 +64,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden'
   },
   navbar: {
-    backgroundColor: '#212529',
+    backgroundColor: colors.navbar,
     flexDirection: 'column',
     padding: 3,
     justifyContent: 'center'
