@@ -17,14 +17,14 @@ export default function NavbarLink ({
   const translation = useRef(new Animated.Value(0)).current
 
   const handlePressIn = () => {
-    setColor(colors.activeText)
+    setColor(colors.buttonTextPress)
     Animated.spring(translation, {
       toValue: -5,
       useNativeDriver: true
     }).start()
   }
   const handlePressOut = () => {
-    setColor(colors.neutralText)
+    setColor(colors.buttonText)
     Animated.spring(translation, {
       toValue: 0,
       useNativeDriver: true
@@ -37,7 +37,7 @@ export default function NavbarLink ({
       <Link
         style={styles.link}
         to={to}
-        underlayColor="#ffffff"
+        underlayColor="#353b41"
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
       >
