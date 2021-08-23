@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react'
-import { Animated, StyleProp, ViewStyle } from 'react-native'
+import React, { useEffect, useRef } from 'react';
+import { Animated, StyleProp, ViewStyle } from 'react-native';
 
 interface Props {
   children: React.ReactNode|React.ReactNode[]
@@ -10,20 +10,20 @@ export default function AnimatedScreenTransition ({
   children,
   style
 }: Props) {
-  const translation = useRef<Animated.Value>(new Animated.Value(0)).current
+  const translation = useRef<Animated.Value>(new Animated.Value(0)).current;
 
   useEffect(() => {
     Animated.timing(translation, {
       toValue: 1,
       useNativeDriver: true
-    }).start()
-  }, [translation])
+    }).start();
+  }, [translation]);
 
   return (
     <Animated.View
-      style={[{ opacity:  translation }, style]}
+      style={[{ opacity:  translation, flex: 1 }, style]}
     >
       {children}
     </Animated.View>
-  )
+  );
 }
