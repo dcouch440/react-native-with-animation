@@ -8,7 +8,7 @@ import NavbarLink from '../NavbarLink';
 export default function Navbar () {
   const [show, setShow] = useState<boolean>(false)
   const { width } = useDimensions().screen
-  const translation = useRef(new Animated.Value(width)).current
+  const translation = useRef<Animated.Value>(new Animated.Value(width)).current
   const showMenuProperty = show ? 'flex' : 'none'
 
   const handlePress = () => {
