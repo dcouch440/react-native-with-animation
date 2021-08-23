@@ -43,8 +43,8 @@ export default function Navbar () {
         style={[
           { translateX: translation },
           styles.drawer,
-          { display: showMenuProperty
-        }]}
+          { display: showMenuProperty }
+        ]}
       >
         <NavbarLink
           text='Home'
