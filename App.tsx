@@ -1,10 +1,10 @@
-import React from 'react'
-import { StyleSheet } from 'react-native'
-import { NativeRouter, Route } from 'react-router-native'
-import Navbar from './app/components/Navbar'
-import Screen from './app/components/Screen'
-import About from './app/screens/About'
-import Home from './app/screens/Home'
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import { NativeRouter, Route } from 'react-router-native';
+import Navbar from './app/components/Navbar';
+import Screen from './app/components/Screen';
+import About from './app/screens/About';
+import Home from './app/screens/Home';
 
 export default function App () {
   return (
@@ -23,9 +23,9 @@ export default function App () {
         />
       </Screen>
     </NativeRouter>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
 
-})
+});
