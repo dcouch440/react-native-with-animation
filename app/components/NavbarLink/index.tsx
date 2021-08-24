@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Animated, StyleSheet, TouchableOpacity } from 'react-native';
 import { Link } from 'react-router-native';
-import colors from '../../config';
+import colors from '../../config/colors';
 
 type VoidFunction = () => void
 
