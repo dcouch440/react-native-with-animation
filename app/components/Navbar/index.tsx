@@ -1,15 +1,21 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useDimensions } from '@react-native-community/hooks';
 import React, { useRef, useState } from 'react';
-import { Animated, StyleSheet, TouchableOpacity, View } from 'react-native';
-import colors from '../../config';
+import { Animated, LayoutAnimation, Platform, StyleSheet, TouchableOpacity, UIManager, View } from 'react-native';
+import colors from '../../config/colors';
 import NavbarLink from '../NavbarLink';
+
+if (
+  Platform.OS === "android" &&
+  UIManager.setLayoutAnimationEnabledExperimental
+) {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
 
 export default function Navbar () {
   const [show, setShow] = useState<boolean>(false);
   const { width } = useDimensions().screen;
   const translation = useRef<Animated.Value>(new Animated.Value(width)).current;
-  const showMenuProperty = show ? 'flex' : 'none';
 
   const handlePress = () => {
     if (!show) {
@@ -30,7 +36,10 @@ export default function Navbar () {
     <View style={styles.navbar}>
       <View style={styles.topBar}>
         <TouchableOpacity
-          onPress={handlePress}
+          onPress={() => {
+            LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+            handlePress();
+          }}
         >
           <MaterialCommunityIcons
             color='#8b8b8b'
@@ -39,11 +48,10 @@ export default function Navbar () {
           />
         </TouchableOpacity>
       </View>
-      <Animated.View
+      {show && <Animated.View
         style={[
           { translateX: translation },
           styles.drawer,
-          { display: showMenuProperty }
         ]}
       >
         <NavbarLink
@@ -54,7 +62,7 @@ export default function Navbar () {
           text='About'
           to='/about'
         />
-      </Animated.View>
+      </Animated.View>}
     </View>
   );
 }
@@ -67,7 +75,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.navbar,
     flexDirection: 'column',
     padding: 3,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   topBar: {
     height: 35,
