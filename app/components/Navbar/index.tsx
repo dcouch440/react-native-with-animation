@@ -5,11 +5,10 @@ import { Animated, LayoutAnimation, Platform, StyleSheet, TouchableOpacity, UIMa
 import colors from '../../config/colors';
 import NavbarLink from '../NavbarLink';
 
-if (
-  Platform.OS === "android" &&
-  UIManager.setLayoutAnimationEnabledExperimental
-) {
-  UIManager.setLayoutAnimationEnabledExperimental(true);
+if (Platform.OS === 'android') {
+  if (UIManager.setLayoutAnimationEnabledExperimental) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
 }
 
 export default function Navbar () {
@@ -44,25 +43,29 @@ export default function Navbar () {
           <MaterialCommunityIcons
             color='#8b8b8b'
             name='menu'
-            size={32}
+            size={36}
           />
         </TouchableOpacity>
       </View>
-      {show && <Animated.View
-        style={[
-          { translateX: translation },
-          styles.drawer,
-        ]}
-      >
-        <NavbarLink
-          text='Home'
-          to='/'
-        />
-        <NavbarLink
-          text='About'
-          to='/about'
-        />
-      </Animated.View>}
+      {
+        show && (
+          <Animated.View
+            style={[
+              { translateX: translation },
+              styles.drawer,
+            ]}
+          >
+            <NavbarLink
+              text='Home'
+              to='/'
+            />
+            <NavbarLink
+              text='About'
+              to='/about'
+            />
+          </Animated.View>
+        )
+      }
     </View>
   );
 }
