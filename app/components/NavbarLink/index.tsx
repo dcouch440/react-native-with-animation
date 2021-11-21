@@ -1,9 +1,9 @@
-import React, { useRef, useState } from 'react';
 import { Animated, StyleSheet, TouchableOpacity } from 'react-native';
-import { Link } from 'react-router-native';
-import colors from '../../config/colors';
+import React, { useRef, useState } from 'react';
 
-type VoidFunction = () => void
+import { Link } from 'react-router-native';
+import theme from '../../theme';
+import useAnimatedText from '../../hooks/useAnimatedText';
 
 interface Props {
   to: string
@@ -15,27 +15,20 @@ export default function NavbarLink ({
   text
 }: Props
 ) {
-  const [color, setColor] = useState<string>('#FFF');
-  const translation = useRef<Animated.Value>(new Animated.Value(1)).current;
-
-  const handlePressIn: VoidFunction = () => {
-    setColor(colors.buttonTextPress);
-    Animated.spring(translation, {
-      toValue: 1.01,
-      useNativeDriver: true
-    }).start();
-  };
-
-  const handlePressOut: VoidFunction = () => {
-    setColor(colors.buttonText);
-    Animated.spring(translation, {
-      toValue: 1,
-      useNativeDriver: true
-    }).start();
-  };
+  const {
+    handlePressIn,
+    handlePressOut,
+    translation,
+    color
+  } =  useAnimatedText({
+    initColor: theme.palette.white.main,
+    pressedColor: theme.palette.white.darker,
+    initialAnimationValue: 1,
+    pressedInTranslationValue: 1.05,
+  });
 
   return (
-    <TouchableOpacity >
+    <TouchableOpacity>
       <Link
         style={styles.link}
         to={to}
@@ -61,7 +54,7 @@ export default function NavbarLink ({
 
 const styles = StyleSheet.create({
   link: {
-    padding: 15,
+    padding: theme.spacing(1),
     flexDirection: 'row-reverse',
     borderRadius: 10
   }

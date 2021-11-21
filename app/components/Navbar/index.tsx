@@ -1,9 +1,10 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useDimensions } from '@react-native-community/hooks';
-import React, { useRef, useState } from 'react';
 import { Animated, LayoutAnimation, Platform, StyleSheet, TouchableOpacity, UIManager, View } from 'react-native';
-import colors from '../../config/colors';
+import React, { useRef, useState } from 'react';
+
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import NavbarLink from '../NavbarLink';
+import theme from '../../theme';
+import { useDimensions } from '@react-native-community/hooks';
 
 if (Platform.OS === 'android') {
   if (UIManager.setLayoutAnimationEnabledExperimental) {
@@ -63,6 +64,10 @@ export default function Navbar () {
               text='About'
               to='/about'
             />
+            <NavbarLink
+              text='Sections'
+              to='/sections'
+            />
           </Animated.View>
         )
       }
@@ -75,14 +80,15 @@ const styles = StyleSheet.create({
     overflow: 'hidden'
   },
   navbar: {
-    backgroundColor: colors.navbar,
+    backgroundColor: theme.palette.lightBlack.main,
     flexDirection: 'column',
     padding: 3,
     justifyContent: 'center',
   },
   topBar: {
-    height: 35,
+    height: theme.spacing(4),
     flexDirection: 'row-reverse',
-    paddingLeft: 5
+    alignItems: 'center',
+    paddingLeft: theme.spacing(.5),
   }
 });

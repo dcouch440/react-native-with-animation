@@ -1,8 +1,10 @@
+import { StyleSheet, Text, View } from 'react-native';
+
+import AnimatedScreenTransition from '../../components/AnimatedScreenTransition';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import Swiper from 'react-native-swiper';
-import AnimatedScreenTransition from '../../components/AnimatedScreenTransition';
+import theme from '../../theme';
 
 interface IData {
   label: string;
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
-    backgroundColor: '#a7b4a7'
+    backgroundColor: theme.palette.primary.main,
   },
   slideLayout: {
     flex: 1,

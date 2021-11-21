@@ -1,8 +1,9 @@
-import React from 'react';
 import { StyleSheet, Text } from 'react-native';
-import AnimatedScreenTransition from '../../components/AnimatedScreenTransition';
 
-export default function About () {
+import AnimatedScreenTransition from '../../components/AnimatedScreenTransition';
+import React from 'react';
+
+export default function About (): JSX.Element {
   return (
     <AnimatedScreenTransition
       style={styles.container}

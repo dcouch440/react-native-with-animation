@@ -1,6 +1,8 @@
+import { SafeAreaView, StyleProp, StyleSheet, ViewStyle } from 'react-native';
+
 import Constants from 'expo-constants';
 import React from 'react';
-import { SafeAreaView, StyleProp, StyleSheet, ViewStyle } from 'react-native';
+import theme from '../../theme';
 
 interface IScreen {
   children: React.ReactNode|React.ReactNode[]
@@ -23,6 +25,7 @@ const styles = StyleSheet.create({
   screen: {
     paddingTop: Constants.statusBarHeight,
     flex: 1,
-    backgroundColor: '#fff5f5'
+    backgroundColor: theme.palette.white.darker,
+    fontFamily: 'sans-serif',
   }
 });
