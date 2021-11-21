@@ -68,6 +68,10 @@ export default function Navbar () {
               text='Sections'
               to='/sections'
             />
+            <NavbarLink
+              text='Multi Select'
+              to='/multi-select'
+            />
           </Animated.View>
         )
       }

@@ -14,24 +14,33 @@ interface ITitle {
 
 interface IRenderItem {
   item: string;
-  section: {title: string;}
+  section: {title: string; url:string}
 }
 
 interface IhandlePress {
   item: string;
   title: string;
+  url: string;
+}
+
+interface ICurrentSelection {
+  title: string;
+  currentSelection: string;
+  url: string;
 }
 
 export default function Sections () {
-  const [currentSelection, setCurrentSelection] = useState<{title: string; currentSelection: string;}>({
+  const [currentSelection, setCurrentSelection] = useState<ICurrentSelection>({
     title: SECTIONS[0].title,
     currentSelection: SECTIONS[0].data[0],
+    url: SECTIONS[0].url,
   });
 
-  const handlePress = ({ item, title }: IhandlePress) => {
+  const handlePress = ({ item, title, url }: IhandlePress) => {
     setCurrentSelection({
       title,
-      currentSelection: item
+      currentSelection: item,
+      url,
     });
   };
 
@@ -39,12 +48,12 @@ export default function Sections () {
     <Text style={styles.title}>{title}</Text>
   );
 
-  const renderItem = ({ item, section: { title } }: IRenderItem ) => (
+  const renderItem = ({ item, section }: IRenderItem ) => (
     <PressableListItem
       handlePress={handlePress}
       item={item}
+      section={section}
       style={styles.data}
-      title={title}
     />
   );
 
@@ -72,8 +81,8 @@ const styles = StyleSheet.create({
     paddingLeft: theme.spacing(1),
     paddingBottom: theme.spacing(1),
     fontSize: theme.typography.fontSize.lg,
-    color: theme.palette.lightBlack.main,
-    backgroundColor: theme.palette.honeyYellow.main,
+    color: theme.palette.white.darker,
+    backgroundColor: theme.palette.lightBlack.transparent,
     borderRadius: theme.radius(1),
     marginTop: theme.spacing(1),
   },

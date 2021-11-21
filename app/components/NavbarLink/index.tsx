@@ -1,7 +1,7 @@
 import { Animated, StyleSheet, TouchableOpacity } from 'react-native';
-import React, { useRef, useState } from 'react';
 
 import { Link } from 'react-router-native';
+import React from 'react';
 import theme from '../../theme';
 import useAnimatedText from '../../hooks/useAnimatedText';
 
@@ -32,18 +32,17 @@ export default function NavbarLink ({
       <Link
         style={styles.link}
         to={to}
-        underlayColor="#353b41"
+        underlayColor={theme.palette.lightBlack.lighter}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
       >
-        <Animated.Text style={{
-          color: color,
-          fontSize: 23,
-          transform: [{ scale: translation }],
-          textShadowColor: 'rgba(255, 255, 255, 0.404)',
-          textShadowOffset: { width: -1, height: 1 },
-          textShadowRadius: 10
-        }}
+        <Animated.Text style={[
+          styles.text,
+          {
+            color,
+            transform: [{ scale: translation }],
+          }
+        ]}
         >
           {text}
         </Animated.Text>
@@ -57,5 +56,11 @@ const styles = StyleSheet.create({
     padding: theme.spacing(1),
     flexDirection: 'row-reverse',
     borderRadius: 10
+  },
+  text: {
+    textShadowColor: theme.palette.transparentWhite.main,
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: theme.radius(1),
+    fontSize: theme.typography.fontSize.lg,
   }
 });

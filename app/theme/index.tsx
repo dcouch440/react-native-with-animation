@@ -12,6 +12,7 @@ const theme = {
     },
     lightBlack: {
       main: '#212529',
+      transparent: '#21252990',
       lighter: '#464c52',
     },
     lightGray: {
@@ -20,6 +21,9 @@ const theme = {
     },
     honeyYellow: {
       main: '#F6AE2D'
+    },
+    transparentWhite: {
+      main: 'rgba(255, 255, 255, 0.404)'
     }
   },
   typography: {
@@ -28,6 +32,7 @@ const theme = {
     },
     fontSize: {
       reg: 14,
+      md: 18,
       lg: 24,
     }
   },

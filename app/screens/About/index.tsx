@@ -2,6 +2,7 @@ import { StyleSheet, Text } from 'react-native';
 
 import AnimatedScreenTransition from '../../components/AnimatedScreenTransition';
 import React from 'react';
+import theme from '../../theme';
 
 export default function About (): JSX.Element {
   return (
@@ -21,6 +22,6 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: 'center',
-    fontSize: 30,
+    fontSize: theme.typography.fontSize.lg,
   }
 });

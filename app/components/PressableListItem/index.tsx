@@ -4,21 +4,28 @@ import React from 'react';
 import theme from '../../theme';
 import useAnimatedText from '../../hooks/useAnimatedText';
 
-type ThandlePress = ({ item, title }: {item: string; title: string;}) => void
+type ThandlePress = (
+  { item, title, url: string }:
+  { item: string; title: string; url: string}
+) => void
 
 interface IPressableListItem {
   handlePress: ThandlePress;
   style: object;
   item: string;
-  title: string;
+  section: {
+    title: string;
+    url: string;
+  };
 }
 
 export default function PressableListItem ({
   handlePress,
   style,
   item,
-  title,
-}: IPressableListItem) {
+  section: { title, url }
+}: IPressableListItem
+) {
   const {
     handlePressIn,
     handlePressOut,
@@ -29,13 +36,13 @@ export default function PressableListItem ({
     initColor: theme.palette.lightBlack.main,
     pressedColor: theme.palette.lightGray.darker,
     initialAnimationValue: 1,
-    pressedInTranslationValue: 5,
+    pressedInTranslationValue: 2,
   });
 
   return (
     <Pressable
       style={[styles.root, pressed && styles.pressedBackground]}
-      onPress={() => handlePress({ item, title })}
+      onPress={() => handlePress({ item, title, url })}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
     >
@@ -43,9 +50,7 @@ export default function PressableListItem ({
         style,
         {
           color,
-          transform: [{
-            translateX: translation
-          }]
+          transform: [{ translateX: translation }],
         }
       ]}
       >
