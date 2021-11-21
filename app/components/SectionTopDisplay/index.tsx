@@ -17,7 +17,7 @@ export default function SectionTopDisplay ({ selected: { title, currentSelection
       source={{ uri: url }}
       style={styles.root}
     >
-      <View style={styles.transparentBackground}>
+      <View>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.currentSelection}>{currentSelection}</Text>
       </View>
@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     borderRadius: theme.radius(1),
     marginTop: theme.spacing(1),
     padding: theme.spacing(2),
+    overflow: 'hidden',
   },
   makeSelection: {
     backgroundColor: theme.palette.honeyYellow.main,
@@ -51,20 +52,26 @@ const styles = StyleSheet.create({
     color: theme.palette.lightBlack.main,
     fontSize: theme.typography.fontSize.lg,
   },
-  transparentBackground: {
-    backgroundColor: theme.palette.lightBlack.transparent,
-    borderRadius: theme.radius(1),
-    padding: theme.spacing(1),
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
   title: {
+    backgroundColor: theme.palette.lightBlack.transparent,
+    padding: theme.spacing(1),
     color: theme.palette.white.main,
     fontSize: theme.typography.fontSize.lg,
+    borderTopLeftRadius: theme.radius(1),
+    borderTopRightRadius: theme.radius(1),
+    borderBottomRightRadius: theme.radius(1),
     fontWeight: 'bold',
   },
   currentSelection: {
-    color: theme.palette.white.main,
-    fontSize: theme.typography.fontSize.lg,
+    padding: theme.spacing(0.5),
+    paddingRight: theme.spacing(1),
+    paddingLeft: theme.spacing(1),
+    color: theme.palette.lightBlack.main,
+    fontWeight: 'bold',
+    fontSize: theme.typography.fontSize.md,
+    borderBottomLeftRadius: theme.radius(0.5),
+    borderBottomRightRadius: theme.radius(0.5),
+    backgroundColor: theme.palette.honeyYellow.main,
+    alignSelf: 'flex-start',
   }
 });
