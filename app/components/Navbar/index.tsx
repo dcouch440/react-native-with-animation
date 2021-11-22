@@ -70,18 +70,16 @@ export default function Navbar () {
 
 const styles = StyleSheet.create({
   drawer: {
-    overflow: 'hidden'
+    overflow: 'hidden',
+    paddingBottom: theme.spacing(1),
   },
   navbar: {
     backgroundColor: theme.palette.lightBlack.main,
-    flexDirection: 'column',
-    padding: 3,
     justifyContent: 'center',
   },
   topBar: {
-    height: theme.spacing(4),
     flexDirection: 'row-reverse',
     alignItems: 'center',
-    paddingLeft: theme.spacing(.5),
+    padding: theme.spacing(1),
   }
 });

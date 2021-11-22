@@ -1,4 +1,6 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
+
+type TGetIsActiveState = (id: number) => boolean
 
 export interface IActive {
   id: number,
@@ -11,15 +13,12 @@ export default function useMultiSelect () {
   const [active, setActive] = useState<IActive[]|[]>([]);
 
   /**
-   * @param {number} id - invoke within a FlatList to check if the current list element is included in the active array.
+   * @param id - invoke within a FlatList to check if the current list element is included in the active array.
    */
 
-  const getIsActiveState: (id: number) => boolean = useCallback(
-    (id: number) => active.some(({ id: activeId }) => (id === activeId)),
-    [active]
-  );
+  const getIsActiveState: TGetIsActiveState = id => active.some(({ id: activeId }) => (id === activeId));
 
-  const handlePress: IUseMultiHandlePress = useCallback(({ id, data }) => {
+  const handlePress: IUseMultiHandlePress = ({ id, data }) => {
     const isSelected = active.some(({ id: activeId }: IActive) => activeId === id);
 
     if (isSelected) {
@@ -31,7 +30,7 @@ export default function useMultiSelect () {
       ...prev,
       { id, data }
     ]);
-  }, [active]);
+  };
 
   return { getIsActiveState, active, handlePress };
 }

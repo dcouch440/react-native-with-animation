@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   link: {
     padding: theme.spacing(1),
     flexDirection: 'row-reverse',
-    borderRadius: 10
+    borderRadius: theme.radius(1),
   },
   text: {
     textShadowColor: theme.palette.transparentWhite.main,

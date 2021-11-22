@@ -34,8 +34,8 @@ export default function PressableListItem ({
     pressed
   } =  useTranslationOnPress({
     initColor: theme.palette.lightBlack.main,
-    pressedColor: theme.palette.lightGray.darker,
-    initialAnimationValue: 1,
+    pressedColor: theme.palette.lightBlack.lighter,
+    initialAnimationValue: 0,
     pressedInTranslationValue: 2,
   });
 

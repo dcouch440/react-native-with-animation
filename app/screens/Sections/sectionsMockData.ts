@@ -1,11 +1,11 @@
-export interface ISections {
+export interface ISectionMockData {
   title: string;
   url: string;
   data: string[];
   id: number;
 }
 
-export const SECTIONS: ISections[] = [
+const sectionMockData: ISectionMockData[] = [
   {
     title: 'Title One',
     url: 'https://res.cloudinary.com/dbyretay5/image/upload/v1637532746/testing/d9fc84a0d1d545d77e78aaad39c20c11d3355074_ewy6xh.png',
@@ -31,3 +31,5 @@ export const SECTIONS: ISections[] = [
     id: 4
   },
 ];
+
+export default sectionMockData;

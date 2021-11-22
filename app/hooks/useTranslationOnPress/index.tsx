@@ -14,12 +14,12 @@ export interface IUseTranslationOnPress {
 }
 
 /**
- * @param {string} initColor - The color that is the un pressed value.
- * @param {string} pressedColor - The color that is returned when the press is active.
- * @param {number} pressedInTranslationValue - The value that will ease to during activation.
- * @param {number} pressedOutTranslationValue - Optional the value that will be returned to after the activation ends.
- * @param {number} initialAnimationValue - The start value for the translation.
- * @param {boolean} pressOnly - If color state, pressed state, are not required, use pressOnly: true.
+ * @param initColor - The color that is the un pressed value.
+ * @param pressedColor - The color that is returned when the press is active.
+ * @param pressedInTranslationValue - The value that will ease to during activation.
+ * @param pressedOutTranslationValue - Optional the value that will be returned to after the activation ends.
+ * @param initialAnimationValue - The start value for the translation.
+ * @param pressOnly - If color state, pressed state, are not required, use pressOnly: true.
 */
 
 export default function useTranslationOnPress ({
@@ -64,7 +64,7 @@ export default function useTranslationOnPress ({
    * @description handlePress is used for toggle with translation.
    */
 
-  const handlePress = () => {
+  const handlePress: VoidFunction = () => {
     if (toggle) {
       handlePressIn();
     } else {

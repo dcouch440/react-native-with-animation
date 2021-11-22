@@ -1,10 +1,10 @@
-import { Animated, Pressable, SafeAreaView, SectionList, StyleSheet, Text, View } from 'react-native';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
+import { SectionList, StyleSheet, Text, View } from 'react-native';
 
 import AnimatedScreenTransition from '../../components/AnimatedScreenTransition';
 import PressableListItem from '../../components/PressableListItem';
-import { SECTIONS } from './sectionsMockData';
 import SectionTopDisplay from '../../components/SectionTopDisplay';
+import sectionMockData from './sectionsMockData';
 import theme from '../../theme';
 
 interface ITitle {
@@ -31,10 +31,11 @@ interface ICurrentSelection {
 }
 
 export default function Sections () {
+  const [{ title, data: [firstDataEntry], url }] = sectionMockData;
   const [currentSelection, setCurrentSelection] = useState<ICurrentSelection>({
-    title: SECTIONS[0].title,
-    currentSelection: SECTIONS[0].data[0],
-    url: SECTIONS[0].url,
+    title,
+    currentSelection: firstDataEntry,
+    url,
   });
 
   const handlePress = ({ item, title, url }: IhandlePress) => {
@@ -46,7 +47,7 @@ export default function Sections () {
   };
 
   const renderHeader = ({ section: { title } }: ITitle) => (
-    <Text style={styles.title}>{title}</Text>
+    <Text style={styles.listTitle}>{title}</Text>
   );
 
   const renderItem = ({ item, section }: IRenderItem ) => (
@@ -54,7 +55,7 @@ export default function Sections () {
       handlePress={handlePress}
       item={item}
       section={section}
-      style={styles.data}
+      style={styles.listItem}
     />
   );
 
@@ -65,7 +66,7 @@ export default function Sections () {
         keyExtractor={item => item}
         renderItem={renderItem}
         renderSectionHeader={renderHeader}
-        sections={SECTIONS}
+        sections={sectionMockData}
       />
     </AnimatedScreenTransition>
   );
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
     marginRight: theme.spacing(1),
     marginLeft: theme.spacing(1),
   },
-  title: {
+  listTitle: {
     paddingTop: theme.spacing(1),
     paddingLeft: theme.spacing(1),
     paddingBottom: theme.spacing(1),
@@ -87,11 +88,7 @@ const styles = StyleSheet.create({
     borderRadius: theme.radius(1),
     marginTop: theme.spacing(1),
   },
-  data: {
-    paddingLeft: theme.spacing(2),
-    borderBottomColor: theme.palette.lightGray.main,
-    borderBottomWidth: 1,
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
+  listItem: {
+    padding: theme.spacing(1),
   },
 });
