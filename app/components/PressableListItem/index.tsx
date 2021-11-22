@@ -2,7 +2,7 @@ import { Animated, Pressable, StyleSheet } from 'react-native';
 
 import React from 'react';
 import theme from '../../theme';
-import useAnimatedText from '../../hooks/useAnimatedText';
+import useTranslationOnPress from '../../hooks/useTranslationOnPress';
 
 type ThandlePress = (
   { item, title, url: string }:
@@ -32,7 +32,7 @@ export default function PressableListItem ({
     translation,
     color,
     pressed
-  } =  useAnimatedText({
+  } =  useTranslationOnPress({
     initColor: theme.palette.lightBlack.main,
     pressedColor: theme.palette.lightGray.darker,
     initialAnimationValue: 1,

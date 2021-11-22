@@ -1,20 +1,20 @@
-import { SafeAreaView, Text, View } from 'react-native';
-
+import AnimatedScreenTransition from '../../components/AnimatedScreenTransition';
 import MultiSelect from '../../components/MultiSelect';
 import React from 'react';
+import { SafeAreaView } from 'react-native';
 import selectMockData from './selectMockData';
 import useMultiSelect from '../../hooks/useMultiSelect';
 
 export default function MultipleSelect () {
-  const { active, handlePress } = useMultiSelect();
+  const { getIsActiveState, handlePress } = useMultiSelect();
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <AnimatedScreenTransition>
       <MultiSelect
-        activeSelections={active}
+        getIsActiveState={getIsActiveState}
         handlePress={handlePress}
         selections={selectMockData}
       />
-    </SafeAreaView>
+    </AnimatedScreenTransition>
   );
 }

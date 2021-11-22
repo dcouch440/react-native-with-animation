@@ -1,6 +1,7 @@
 import { Animated, Pressable, SafeAreaView, SectionList, StyleSheet, Text, View } from 'react-native';
 import React, { useRef, useState } from 'react';
 
+import AnimatedScreenTransition from '../../components/AnimatedScreenTransition';
 import PressableListItem from '../../components/PressableListItem';
 import { SECTIONS } from './sectionsMockData';
 import SectionTopDisplay from '../../components/SectionTopDisplay';
@@ -58,7 +59,7 @@ export default function Sections () {
   );
 
   return (
-    <SafeAreaView style={styles.root}>
+    <AnimatedScreenTransition style={styles.root}>
       <SectionTopDisplay selected={currentSelection} />
       <SectionList
         keyExtractor={item => item}
@@ -66,7 +67,7 @@ export default function Sections () {
         renderSectionHeader={renderHeader}
         sections={SECTIONS}
       />
-    </SafeAreaView>
+    </AnimatedScreenTransition>
   );
 }
 

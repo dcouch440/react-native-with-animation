@@ -1,5 +1,5 @@
+import { Animated, StyleProp, StyleSheet, ViewStyle } from 'react-native';
 import React, { useEffect, useRef } from 'react';
-import { Animated, StyleProp, ViewStyle } from 'react-native';
 
 interface Props {
   children: React.ReactNode|React.ReactNode[]
@@ -21,9 +21,15 @@ export default function AnimatedScreenTransition ({
 
   return (
     <Animated.View
-      style={[{ opacity:  translation, flex: 1 }, style]}
+      style={[{ opacity: translation }, styles.root, style]}
     >
       {children}
     </Animated.View>
   );
 }
+
+const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+  }
+});

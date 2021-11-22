@@ -3,7 +3,7 @@ import { Animated, StyleSheet, TouchableOpacity } from 'react-native';
 import { Link } from 'react-router-native';
 import React from 'react';
 import theme from '../../theme';
-import useAnimatedText from '../../hooks/useAnimatedText';
+import useTranslationOnPress from '../../hooks/useTranslationOnPress';
 
 interface Props {
   to: string
@@ -20,7 +20,7 @@ export default function NavbarLink ({
     handlePressOut,
     translation,
     color
-  } =  useAnimatedText({
+  } =  useTranslationOnPress({
     initColor: theme.palette.white.main,
     pressedColor: theme.palette.white.darker,
     initialAnimationValue: 1,

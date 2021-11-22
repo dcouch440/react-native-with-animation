@@ -34,6 +34,9 @@ const theme = {
       reg: 14,
       md: 18,
       lg: 24,
+    },
+    fontFamily: {
+      reg: 'sans-serif'
     }
   },
   spacing: (space: number) => space * 12,

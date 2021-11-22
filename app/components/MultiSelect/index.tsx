@@ -1,4 +1,4 @@
-import { FlatList, SafeAreaView, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { FlatList, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 import { ISelectMockData } from '../../screens/MultipleSelect/selectMockData';
 import { IUseMultiHandlePress } from '../../hooks/useMultiSelect';
@@ -8,20 +8,20 @@ import theme from '../../theme';
 interface IMultiSelect {
   handlePress: IUseMultiHandlePress
   selections: ISelectMockData[];
-  activeSelections: ISelectMockData[];
+  getIsActiveState: (id: number) => boolean;
 }
 
 export default function MultiSelect ({
   handlePress,
   selections,
-  activeSelections,
+  getIsActiveState,
 }: IMultiSelect
 ) {
   const renderItem = ({ item: { data, id } }: { item: ISelectMockData }) => (
     <TouchableOpacity
       style={[
         styles.selectable,
-        activeSelections.some(({ id: activeId }) => (id === activeId))
+        getIsActiveState(id)
           ? styles.active
           : styles.inactive,
       ]}
